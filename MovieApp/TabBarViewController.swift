@@ -33,7 +33,7 @@ class TabBarViewController: UIViewController{
     
     func createTabBar()->UITabBarController{
         let tabBar = UITabBarController()
-        UITabBar.appearance().tintColor = .black
+        tabBar.tabBar.tintColor = .black
         tabBar.viewControllers = [createDiscoverNC(),createGenresNC(),createArtistNC()]
         return tabBar
     }

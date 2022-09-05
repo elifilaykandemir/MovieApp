@@ -8,6 +8,6 @@
 import UIKit
 
 struct Genres {
-    var name : UILabel
-    var image : UIImageView
+    var name : String
+    var image : String
 }
