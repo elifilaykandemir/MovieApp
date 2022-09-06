@@ -7,13 +7,22 @@
 
 import UIKit
 
-class TabBarViewController: UIViewController{
+class TabBarViewController: UITabBarController{
     
-   
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tabBar.tintColor = .black
+        viewControllers = [createDiscoverNC(),createGenresNC(),createArtistNC()]
+        
+    }
+    
     func createGenresNC() -> UINavigationController{
         let genresVC = GenresViewController()
         genresVC.title = "Genres"
         genresVC.tabBarItem.tag = 1
+        genresVC.tabBarItem.image = UIImage(named:"genres")
         return UINavigationController(rootViewController: genresVC)
     }
     
@@ -21,6 +30,7 @@ class TabBarViewController: UIViewController{
         let discoverVC = DiscoverViewController()
         discoverVC.title = "Discover"
         discoverVC.tabBarItem.tag = 0
+        discoverVC.tabBarItem.image = UIImage(named:"discover")
         return UINavigationController(rootViewController: discoverVC)
     }
     
@@ -28,18 +38,11 @@ class TabBarViewController: UIViewController{
         let artistVC = ArtistViewController()
         artistVC.title = "Artists"
         artistVC.tabBarItem.tag = 2
+        artistVC.tabBarItem.image = UIImage(named:"artists")
         return UINavigationController(rootViewController: artistVC)
     }
     
-    func createTabBar()->UITabBarController{
-        let tabBar = UITabBarController()
-        tabBar.tabBar.tintColor = .black
-        tabBar.viewControllers = [createDiscoverNC(),createGenresNC(),createArtistNC()]
-        return tabBar
-    }
     
-    
-  
  }
    
 

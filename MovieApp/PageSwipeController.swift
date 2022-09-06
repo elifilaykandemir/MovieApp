@@ -21,14 +21,12 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
         button.backgroundColor = UIColor(named: "buttonblue")
         button.titleLabel?.font = UIFont(name: "AppleGothic", size: 22)
         button.titleLabel?.textAlignment = .center
-        //button.addTarget(self, action: #selector(didTappedButton), for: .touchUpInside)
-        //button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     let pageControl: UIPageControl = {
         var pageCont = UIPageControl()
-        //pageCont.currentPage = 0
+        pageCont.currentPage = 0
         pageCont.numberOfPages = 3
         pageCont.currentPageIndicatorTintColor = UIColor(named: "buttonblue")
         pageCont.pageIndicatorTintColor = .white
@@ -36,7 +34,6 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
         return pageCont
     }()
 
-    //var pagecell = PageCell()
     
 
     override func viewDidLoad() {
@@ -44,8 +41,6 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
         collectionView.backgroundColor = .white
         collectionView.register(PageCell.self, forCellWithReuseIdentifier:"cellid")
         collectionView.isPagingEnabled = true
-        //navigationController?.hidesBarsOnTap = true
-        //pagecell.exploreButton.addTarget(self, action: #selector(didTappedButton), for: .touchUpInside)
         
     }
     func collectionView(_ collectionView: UICollectionView, layout CollectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -61,15 +56,20 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
         let imageName = imagesName[indexPath.item]
         cell.backroundImageView.image = UIImage(named: imageName)
         cell.addSubview(exploreButton)
-        exploreButton.topAnchor.constraint(equalTo: cell.topAnchor , constant: 720 ).isActive = true
-        exploreButton.bottomAnchor.constraint(equalTo: cell.bottomAnchor , constant:-120).isActive = true
-        exploreButton.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 50).isActive = true
-        exploreButton.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -50).isActive = true
         cell.addSubview(pageControl)
-        pageControl.topAnchor.constraint(equalTo: cell.topAnchor , constant: 763 ).isActive = true
-        pageControl.bottomAnchor.constraint(equalTo: cell.bottomAnchor , constant:-24).isActive = true
-        pageControl.centerXAnchor.constraint(equalTo: cell.centerXAnchor).isActive = true
-        pageControl.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
+        
+        let constraint = [
+            exploreButton.topAnchor.constraint(equalTo: cell.topAnchor , constant: 720 ),
+            exploreButton.bottomAnchor.constraint(equalTo: cell.bottomAnchor , constant:-120),
+            exploreButton.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 50),
+            exploreButton.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -50),
+            pageControl.topAnchor.constraint(equalTo: cell.topAnchor , constant: 763 ),
+            pageControl.bottomAnchor.constraint(equalTo: cell.bottomAnchor , constant:-24),
+            pageControl.centerXAnchor.constraint(equalTo: cell.centerXAnchor),
+            pageControl.centerYAnchor.constraint(equalTo: cell.centerYAnchor)
+       ]
+        
+        NSLayoutConstraint.activate(constraint)
         
         pageControl.currentPage = indexPath.item
         exploreButton.addTarget(self, action: #selector(didTappedButton), for: .touchUpInside)
@@ -83,12 +83,9 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
     }
 
 
-
-
     @objc func didTappedButton(){
         print("Button tapped")
-        
-        let rootVC = TabBarViewController().createTabBar()
+        let rootVC = TabBarViewController()
         rootVC.modalPresentationStyle = .fullScreen
         present(rootVC, animated: true)
 

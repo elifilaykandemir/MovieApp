@@ -14,8 +14,7 @@ class DiscoverViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .search)
-        
-     
+
 
 }
 }

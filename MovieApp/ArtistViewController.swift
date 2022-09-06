@@ -15,6 +15,4 @@ class ArtistViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .search)
     }
     
-
-
 }
