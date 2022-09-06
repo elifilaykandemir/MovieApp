@@ -18,7 +18,7 @@ class PageCell : UICollectionViewCell{
     }()
 
     
-    let pageTitle = UTextView(labelText: "Movies & Series", labelFontNamed: "AppleGothic", labelFontSize: 40)
+    lazy var pageTitle = UTextView(labelText: "Movies & Series", labelFontNamed: "AppleGothic", labelFontSize: 40)
     
     let pageSubtitle = UTextView(labelText: "The world’s most popular and authoritative source for movies and series.", labelFontNamed: "AppleGothic", labelFontSize: 20)
 

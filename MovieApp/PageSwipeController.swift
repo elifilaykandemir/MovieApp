@@ -12,7 +12,7 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
     
     let imagesName = ["firstpage","secondpage","thirdpage"]
     
-    let exploreButton : UIButton = {
+    lazy var exploreButton : UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Explore Collection   >", for: .normal)
@@ -24,7 +24,7 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
         return button
     }()
     
-    let pageControl: UIPageControl = {
+    lazy var pageControl: UIPageControl = {
         var pageCont = UIPageControl()
         pageCont.currentPage = 0
         pageCont.numberOfPages = 3
@@ -58,7 +58,7 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
         cell.addSubview(exploreButton)
         cell.addSubview(pageControl)
         
-        let constraint = [
+        lazy var constraint = [
             exploreButton.topAnchor.constraint(equalTo: cell.topAnchor , constant: 720 ),
             exploreButton.bottomAnchor.constraint(equalTo: cell.bottomAnchor , constant:-120),
             exploreButton.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 50),
