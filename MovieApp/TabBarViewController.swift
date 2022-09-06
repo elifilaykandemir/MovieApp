@@ -41,8 +41,6 @@ class TabBarViewController: UITabBarController{
         artistVC.tabBarItem.image = UIImage(named:"artists")
         return UINavigationController(rootViewController: artistVC)
     }
-    
-    
  }
    
 

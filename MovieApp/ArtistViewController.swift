@@ -14,5 +14,4 @@ class ArtistViewController: UIViewController {
         view.backgroundColor = .white
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .search)
     }
-    
 }

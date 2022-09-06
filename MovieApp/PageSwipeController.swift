@@ -34,13 +34,13 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
         return pageCont
     }()
 
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupconstraint()
         collectionView.backgroundColor = .white
         collectionView.register(PageCell.self, forCellWithReuseIdentifier:"cellid")
         collectionView.isPagingEnabled = true
+        exploreButton.addTarget(self, action: #selector(didTappedButton), for: .touchUpInside)
         
     }
     func collectionView(_ collectionView: UICollectionView, layout CollectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -55,42 +55,40 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath) as! PageCell
         let imageName = imagesName[indexPath.item]
         cell.backroundImageView.image = UIImage(named: imageName)
-        cell.addSubview(exploreButton)
-        cell.addSubview(pageControl)
-        
-        lazy var constraint = [
-            exploreButton.topAnchor.constraint(equalTo: cell.topAnchor , constant: 720 ),
-            exploreButton.bottomAnchor.constraint(equalTo: cell.bottomAnchor , constant:-120),
-            exploreButton.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 50),
-            exploreButton.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -50),
-            pageControl.topAnchor.constraint(equalTo: cell.topAnchor , constant: 763 ),
-            pageControl.bottomAnchor.constraint(equalTo: cell.bottomAnchor , constant:-24),
-            pageControl.centerXAnchor.constraint(equalTo: cell.centerXAnchor),
-            pageControl.centerYAnchor.constraint(equalTo: cell.centerYAnchor)
-       ]
-        
-        NSLayoutConstraint.activate(constraint)
-        
-        pageControl.currentPage = indexPath.item
-        exploreButton.addTarget(self, action: #selector(didTappedButton), for: .touchUpInside)
-        
         return cell
-    
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imagesName.count
     }
 
-
     @objc func didTappedButton(){
         print("Button tapped")
         let rootVC = TabBarViewController()
         rootVC.modalPresentationStyle = .fullScreen
         present(rootVC, animated: true)
-
     }
     
+    func setupconstraint(){
+        view.addSubview(exploreButton)
+        view.addSubview(pageControl)
+        lazy var constraint = [
+            exploreButton.topAnchor.constraint(equalTo: view.topAnchor , constant: 720 ),
+            exploreButton.bottomAnchor.constraint(equalTo: view.bottomAnchor , constant:-120),
+            exploreButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
+            exploreButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
+            pageControl.topAnchor.constraint(equalTo: view.topAnchor , constant: 763 ),
+            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor , constant:-24),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pageControl.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+       ]
+        
+        NSLayoutConstraint.activate(constraint)
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let x = targetContentOffset.pointee.x
+        print(x,view.frame.width,x/view.frame.width)
+        pageControl.currentPage = Int(x/view.frame.width)
+    }
 }
-
-

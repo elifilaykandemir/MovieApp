@@ -10,23 +10,21 @@ import UIKit
 class PageCell : UICollectionViewCell{
     
 
-    
     let backroundImageView : UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    
     lazy var pageTitle = UTextView(labelText: "Movies & Series", labelFontNamed: "AppleGothic", labelFontSize: 40)
     
     let pageSubtitle = UTextView(labelText: "The world’s most popular and authoritative source for movies and series.", labelFontNamed: "AppleGothic", labelFontSize: 20)
 
-   
     override init(frame:CGRect){
         super.init(frame: frame)
         setupLayoutContent()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -52,7 +50,5 @@ class PageCell : UICollectionViewCell{
         pageSubtitle.rightAnchor.constraint(equalTo: rightAnchor, constant: 0)
         ]
         NSLayoutConstraint.activate(constraint)
-
     }
-
 }

@@ -27,9 +27,7 @@ class UTextView : UILabel{
           textColor = .white
           translatesAutoresizingMaskIntoConstraints = false
           numberOfLines = 0
-          
       }
-
-  }
+}
 
 

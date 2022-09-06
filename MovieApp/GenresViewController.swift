@@ -9,11 +9,9 @@ import UIKit
 
 class GenresViewController:UIViewController {
     
-override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .search)
-
-        }
-
+    }
 }
