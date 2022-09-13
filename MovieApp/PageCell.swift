@@ -16,9 +16,9 @@ class PageCell : UICollectionViewCell{
         return imageView
     }()
 
-    lazy var pageTitle = UTextView(labelText: "Movies & Series", labelFontNamed: "AppleGothic", labelFontSize: 40)
+    lazy var pageTitle = Label(labelText: "Movies & Series", labelFontNamed: "AppleGothic", labelFontSize: 40)
     
-    let pageSubtitle = UTextView(labelText: "The world’s most popular and authoritative source for movies and series.", labelFontNamed: "AppleGothic", labelFontSize: 20)
+    let pageSubtitle = Label(labelText: "The world’s most popular and authoritative source for movies and series.", labelFontNamed: "AppleGothic", labelFontSize: 20)
 
     override init(frame:CGRect){
         super.init(frame: frame)

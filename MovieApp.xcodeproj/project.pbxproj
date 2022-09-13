@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC38A52728C40A97009C4159 /* UTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38A52628C40A97009C4159 /* UTextView.swift */; };
+		FC0101FC28D0C5DB007B76DD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0101FB28D0C5DB007B76DD /* UIView+Ext.swift */; };
+		FC0101FE28D112A2007B76DD /* GenresCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0101FD28D112A2007B76DD /* GenresCell.swift */; };
+		FC01020228D11E4D007B76DD /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01020128D11E4D007B76DD /* Genres.swift */; };
+		FC38A52728C40A97009C4159 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38A52628C40A97009C4159 /* Label.swift */; };
 		FCA0B7D528BD3803001D37B6 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7D428BD3803001D37B6 /* GenresViewController.swift */; };
-		FCA0B7D728BE5A20001D37B6 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7D628BE5A20001D37B6 /* Genres.swift */; };
+		FCA0B7D728BE5A20001D37B6 /* GenresImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7D628BE5A20001D37B6 /* GenresImages.swift */; };
 		FCA0B7D928BE5C44001D37B6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7D828BE5C44001D37B6 /* TabBarViewController.swift */; };
 		FCA0B7DB28BE5D5E001D37B6 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7DA28BE5D5E001D37B6 /* DiscoverViewController.swift */; };
 		FCA0B7DD28BE5D93001D37B6 /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7DC28BE5D93001D37B6 /* ArtistViewController.swift */; };
@@ -24,9 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FC38A52628C40A97009C4159 /* UTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTextView.swift; sourceTree = "<group>"; };
+		FC0101FB28D0C5DB007B76DD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		FC0101FD28D112A2007B76DD /* GenresCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresCell.swift; sourceTree = "<group>"; };
+		FC01020128D11E4D007B76DD /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
+		FC38A52628C40A97009C4159 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		FCA0B7D428BD3803001D37B6 /* GenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
-		FCA0B7D628BE5A20001D37B6 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
+		FCA0B7D628BE5A20001D37B6 /* GenresImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresImages.swift; sourceTree = "<group>"; };
 		FCA0B7D828BE5C44001D37B6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FCA0B7DA28BE5D5E001D37B6 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		FCA0B7DC28BE5D93001D37B6 /* ArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
@@ -82,11 +88,14 @@
 				FCD51D7328B8197900A40618 /* PageSwipeController.swift */,
 				FCD51D7528B821DD00A40618 /* PageCell.swift */,
 				FCA0B7D428BD3803001D37B6 /* GenresViewController.swift */,
-				FCA0B7D628BE5A20001D37B6 /* Genres.swift */,
+				FCA0B7D628BE5A20001D37B6 /* GenresImages.swift */,
 				FCA0B7D828BE5C44001D37B6 /* TabBarViewController.swift */,
 				FCA0B7DA28BE5D5E001D37B6 /* DiscoverViewController.swift */,
 				FCA0B7DC28BE5D93001D37B6 /* ArtistViewController.swift */,
-				FC38A52628C40A97009C4159 /* UTextView.swift */,
+				FC38A52628C40A97009C4159 /* Label.swift */,
+				FC0101FB28D0C5DB007B76DD /* UIView+Ext.swift */,
+				FC0101FD28D112A2007B76DD /* GenresCell.swift */,
+				FC01020128D11E4D007B76DD /* Genres.swift */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";
@@ -163,13 +172,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA0B7DB28BE5D5E001D37B6 /* DiscoverViewController.swift in Sources */,
-				FC38A52728C40A97009C4159 /* UTextView.swift in Sources */,
+				FC38A52728C40A97009C4159 /* Label.swift in Sources */,
 				FCA0B7D928BE5C44001D37B6 /* TabBarViewController.swift in Sources */,
 				FCAB825828B6A05D00A6D1FA /* ViewController.swift in Sources */,
+				FC0101FE28D112A2007B76DD /* GenresCell.swift in Sources */,
 				FCD51D7628B821DD00A40618 /* PageCell.swift in Sources */,
-				FCA0B7D728BE5A20001D37B6 /* Genres.swift in Sources */,
+				FCA0B7D728BE5A20001D37B6 /* GenresImages.swift in Sources */,
 				FCD51D7428B8197900A40618 /* PageSwipeController.swift in Sources */,
 				FCA0B7D528BD3803001D37B6 /* GenresViewController.swift in Sources */,
+				FC01020228D11E4D007B76DD /* Genres.swift in Sources */,
+				FC0101FC28D0C5DB007B76DD /* UIView+Ext.swift in Sources */,
 				FCAB825428B6A05D00A6D1FA /* AppDelegate.swift in Sources */,
 				FCAB825628B6A05D00A6D1FA /* SceneDelegate.swift in Sources */,
 				FCA0B7DD28BE5D93001D37B6 /* ArtistViewController.swift in Sources */,

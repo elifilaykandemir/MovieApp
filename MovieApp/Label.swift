@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UTextView : UILabel{
+class Label : UILabel{
     
     
     init(labelText : String ,labelFontNamed:String ,labelFontSize:CGFloat) {

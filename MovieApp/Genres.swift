@@ -2,12 +2,13 @@
 //  Genres.swift
 //  MovieApp
 //
-//  Created by Elif İlay KANDEMİR on 30.08.2022.
+//  Created by Elif İlay KANDEMİR on 13.09.2022.
 //
 
 import UIKit
 
 struct Genres {
-    var name : String
-    var image : String
+    var image : UIImage
+    var title : String
+
 }
