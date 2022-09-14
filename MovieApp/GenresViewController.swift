@@ -8,10 +8,10 @@
 import UIKit
 
 class GenresViewController:UIViewController {
-    
-    // MARK:-
+
     var tableView = UITableView()
     var genres : [Genres] = []
+    var genresManager = GenresManager()
     
     struct Cells{
         static let genreCell = "GenreCell"
@@ -23,6 +23,7 @@ class GenresViewController:UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .search)
         configureTableView()
         genres = fetchData()
+        genresManager.fetchdata()
     }
     
     func configureTableView(){
