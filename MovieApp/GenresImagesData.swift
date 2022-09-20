@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct GenresImages {
+struct GenresImagesData {
     
     static let adventure = UIImage(named: "adventure")!
     static let drama = UIImage(named: "drama")!

@@ -19,16 +19,15 @@ class GenresCell: UITableViewCell {
         configureTitleView()
         setImageConstraints()
         setLabelConstraints()
-        
+
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(genres:Genres){
+    func setImage(genres:GenresImage){
         genresImageView.image = genres.image
-        genresTitleLabel.text = genres.title
         
     }
  

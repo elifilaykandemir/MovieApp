@@ -10,8 +10,9 @@ import UIKit
 class GenresViewController:UIViewController {
 
     var tableView = UITableView()
-    var genres : [Genres] = []
-    var genresManager = GenresManager()
+    var genres : [GenresImage] = []
+    var genresTitleName = [GenresData]()
+    
     
     struct Cells{
         static let genreCell = "GenreCell"
@@ -23,7 +24,18 @@ class GenresViewController:UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .search)
         configureTableView()
         genres = fetchData()
-        genresManager.fetchdata()
+ 
+        fetch()
+        
+        
+    }
+    func fetch(){
+       
+        NetworkManager.fetchGenericData(urlString: "https://api.themoviedb.org/3/genre/movie/list?api_key=dc190303aea87bdf6e4faa3d59de8c59") { (genresdata:GenresModel) in
+            self.genresTitleName = genresdata.genres
+            print(self.genresTitleName.count)
+            print(self.genresTitleName[0].name)
+        }
     }
     
     func configureTableView(){
@@ -43,13 +55,14 @@ class GenresViewController:UIViewController {
 
 extension GenresViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return genres.count
+        return genresTitleName.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.genreCell) as! GenresCell
         let genre = genres[indexPath.row]
-        cell.set(genres: genre)
+        cell.setImage(genres: genre)
+        cell.genresTitleLabel.text = genresTitleName[indexPath.row].name
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 2.0
         cell.layer.masksToBounds = true
@@ -61,17 +74,14 @@ extension GenresViewController: UITableViewDelegate,UITableViewDataSource{
 
 extension GenresViewController{
     
-    func fetchData() -> [Genres]{
-        let genres1 = Genres(image: GenresImages.drama, title: "Drama")
-        let genres2 = Genres(image: GenresImages.adventure, title: "Adventure")
-        let genres3 = Genres(image: GenresImages.animation, title: "Animation")
-        let genres4 = Genres(image: GenresImages.fantastic, title: "Fantastic")
-        let genres5 = Genres(image: GenresImages.drama, title: "Drama")
-        let genres6 = Genres(image: GenresImages.adventure, title: "Adventure")
-        let genres7 = Genres(image: GenresImages.animation, title: "Animation")
-        let genres8 = Genres(image: GenresImages.fantastic, title: "Fantastic")
-        let genres9 = Genres(image: GenresImages.drama, title: "Drama")
-        let genres10 = Genres(image: GenresImages.adventure, title: "Adventure")
-        return [genres1,genres2,genres3,genres4,genres5,genres6,genres7,genres8,genres9,genres10]
+    func fetchData() -> [GenresImage]{
+        
+        let genres1 = GenresImage(image: GenresImagesData.drama)
+        let genres2 = GenresImage(image: GenresImagesData.adventure)
+        let genres3 = GenresImage(image: GenresImagesData.animation)
+        let genres4 = GenresImage(image: GenresImagesData.fantastic)
+        
+
+        return [genres1,genres2,genres3,genres4,genres1,genres2,genres3,genres4,genres1,genres2,genres3,genres4,genres1,genres2,genres3,genres4,genres1,genres2,genres3,genres4]
     }
 }

@@ -7,11 +7,11 @@
 
 import Foundation
 
+struct GenresModel:Decodable{
+    var genres : [GenresData]
+}
+
 struct GenresData: Decodable {
     var id : Int
     var name : String
-}
-
-struct genresName:Decodable{
-    var genres : [GenresData]
 }

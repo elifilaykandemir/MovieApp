@@ -7,8 +7,6 @@
 
 import UIKit
 
-struct Genres {
+struct GenresImage {
     var image : UIImage
-    var title : String
-
 }

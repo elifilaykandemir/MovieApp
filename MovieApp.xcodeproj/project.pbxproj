@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		FC0101FC28D0C5DB007B76DD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0101FB28D0C5DB007B76DD /* UIView+Ext.swift */; };
 		FC0101FE28D112A2007B76DD /* GenresCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0101FD28D112A2007B76DD /* GenresCell.swift */; };
-		FC01020228D11E4D007B76DD /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01020128D11E4D007B76DD /* Genres.swift */; };
+		FC01020228D11E4D007B76DD /* GenresImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01020128D11E4D007B76DD /* GenresImage.swift */; };
 		FC38A52728C40A97009C4159 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38A52628C40A97009C4159 /* Label.swift */; };
-		FC76C82428D265390035F030 /* GenresManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC76C82328D265390035F030 /* GenresManager.swift */; };
-		FC76C82628D2679F0035F030 /* GenresData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC76C82528D2679F0035F030 /* GenresData.swift */; };
+		FC76C82628D2679F0035F030 /* GenresModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC76C82528D2679F0035F030 /* GenresModel.swift */; };
 		FCA0B7D528BD3803001D37B6 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7D428BD3803001D37B6 /* GenresViewController.swift */; };
-		FCA0B7D728BE5A20001D37B6 /* GenresImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7D628BE5A20001D37B6 /* GenresImages.swift */; };
+		FCA0B7D728BE5A20001D37B6 /* GenresImagesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7D628BE5A20001D37B6 /* GenresImagesData.swift */; };
 		FCA0B7D928BE5C44001D37B6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7D828BE5C44001D37B6 /* TabBarViewController.swift */; };
 		FCA0B7DB28BE5D5E001D37B6 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7DA28BE5D5E001D37B6 /* DiscoverViewController.swift */; };
 		FCA0B7DD28BE5D93001D37B6 /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0B7DC28BE5D93001D37B6 /* ArtistViewController.swift */; };
@@ -24,6 +23,7 @@
 		FCAB825B28B6A05D00A6D1FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCAB825928B6A05D00A6D1FA /* Main.storyboard */; };
 		FCAB825D28B6A05E00A6D1FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCAB825C28B6A05E00A6D1FA /* Assets.xcassets */; };
 		FCAB826028B6A05E00A6D1FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCAB825E28B6A05E00A6D1FA /* LaunchScreen.storyboard */; };
+		FCBD5B7828D9008B0086A7B0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBD5B7728D9008B0086A7B0 /* NetworkManager.swift */; };
 		FCD51D7428B8197900A40618 /* PageSwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD51D7328B8197900A40618 /* PageSwipeController.swift */; };
 		FCD51D7628B821DD00A40618 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD51D7528B821DD00A40618 /* PageCell.swift */; };
 /* End PBXBuildFile section */
@@ -31,12 +31,11 @@
 /* Begin PBXFileReference section */
 		FC0101FB28D0C5DB007B76DD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		FC0101FD28D112A2007B76DD /* GenresCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresCell.swift; sourceTree = "<group>"; };
-		FC01020128D11E4D007B76DD /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
+		FC01020128D11E4D007B76DD /* GenresImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresImage.swift; sourceTree = "<group>"; };
 		FC38A52628C40A97009C4159 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		FC76C82328D265390035F030 /* GenresManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresManager.swift; sourceTree = "<group>"; };
-		FC76C82528D2679F0035F030 /* GenresData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresData.swift; sourceTree = "<group>"; };
+		FC76C82528D2679F0035F030 /* GenresModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresModel.swift; sourceTree = "<group>"; };
 		FCA0B7D428BD3803001D37B6 /* GenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
-		FCA0B7D628BE5A20001D37B6 /* GenresImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresImages.swift; sourceTree = "<group>"; };
+		FCA0B7D628BE5A20001D37B6 /* GenresImagesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresImagesData.swift; sourceTree = "<group>"; };
 		FCA0B7D828BE5C44001D37B6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FCA0B7DA28BE5D5E001D37B6 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		FCA0B7DC28BE5D93001D37B6 /* ArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		FCAB825C28B6A05E00A6D1FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCAB825F28B6A05E00A6D1FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCAB826128B6A05E00A6D1FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCBD5B7728D9008B0086A7B0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FCD51D7328B8197900A40618 /* PageSwipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSwipeController.swift; sourceTree = "<group>"; };
 		FCD51D7528B821DD00A40618 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +82,9 @@
 		FCAB825228B6A05D00A6D1FA /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				FCBD5B7B28DA55E50086A7B0 /* Views */,
+				FCBD5B7A28DA55C40086A7B0 /* Manager */,
+				FCBD5B7928DA55B50086A7B0 /* Model */,
 				FCAB825328B6A05D00A6D1FA /* AppDelegate.swift */,
 				FCAB825528B6A05D00A6D1FA /* SceneDelegate.swift */,
 				FCAB825728B6A05D00A6D1FA /* ViewController.swift */,
@@ -92,18 +95,39 @@
 				FCD51D7328B8197900A40618 /* PageSwipeController.swift */,
 				FCD51D7528B821DD00A40618 /* PageCell.swift */,
 				FCA0B7D428BD3803001D37B6 /* GenresViewController.swift */,
-				FCA0B7D628BE5A20001D37B6 /* GenresImages.swift */,
+				FCA0B7D628BE5A20001D37B6 /* GenresImagesData.swift */,
 				FCA0B7D828BE5C44001D37B6 /* TabBarViewController.swift */,
 				FCA0B7DA28BE5D5E001D37B6 /* DiscoverViewController.swift */,
 				FCA0B7DC28BE5D93001D37B6 /* ArtistViewController.swift */,
 				FC38A52628C40A97009C4159 /* Label.swift */,
 				FC0101FB28D0C5DB007B76DD /* UIView+Ext.swift */,
 				FC0101FD28D112A2007B76DD /* GenresCell.swift */,
-				FC01020128D11E4D007B76DD /* Genres.swift */,
-				FC76C82328D265390035F030 /* GenresManager.swift */,
-				FC76C82528D2679F0035F030 /* GenresData.swift */,
+				FC01020128D11E4D007B76DD /* GenresImage.swift */,
+				FC76C82528D2679F0035F030 /* GenresModel.swift */,
+				FCBD5B7728D9008B0086A7B0 /* NetworkManager.swift */,
 			);
 			path = MovieApp;
+			sourceTree = "<group>";
+		};
+		FCBD5B7928DA55B50086A7B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FCBD5B7A28DA55C40086A7B0 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		FCBD5B7B28DA55E50086A7B0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,13 +206,13 @@
 				FCA0B7D928BE5C44001D37B6 /* TabBarViewController.swift in Sources */,
 				FCAB825828B6A05D00A6D1FA /* ViewController.swift in Sources */,
 				FC0101FE28D112A2007B76DD /* GenresCell.swift in Sources */,
-				FC76C82628D2679F0035F030 /* GenresData.swift in Sources */,
-				FC76C82428D265390035F030 /* GenresManager.swift in Sources */,
+				FC76C82628D2679F0035F030 /* GenresModel.swift in Sources */,
 				FCD51D7628B821DD00A40618 /* PageCell.swift in Sources */,
-				FCA0B7D728BE5A20001D37B6 /* GenresImages.swift in Sources */,
+				FCA0B7D728BE5A20001D37B6 /* GenresImagesData.swift in Sources */,
 				FCD51D7428B8197900A40618 /* PageSwipeController.swift in Sources */,
+				FCBD5B7828D9008B0086A7B0 /* NetworkManager.swift in Sources */,
 				FCA0B7D528BD3803001D37B6 /* GenresViewController.swift in Sources */,
-				FC01020228D11E4D007B76DD /* Genres.swift in Sources */,
+				FC01020228D11E4D007B76DD /* GenresImage.swift in Sources */,
 				FC0101FC28D0C5DB007B76DD /* UIView+Ext.swift in Sources */,
 				FCAB825428B6A05D00A6D1FA /* AppDelegate.swift in Sources */,
 				FCAB825628B6A05D00A6D1FA /* SceneDelegate.swift in Sources */,
