@@ -82,29 +82,17 @@
 		FCAB825228B6A05D00A6D1FA /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				FCBD5B7D28DA57250086A7B0 /* Extension */,
+				FCBD5B7C28DA569D0086A7B0 /* Controller */,
 				FCBD5B7B28DA55E50086A7B0 /* Views */,
 				FCBD5B7A28DA55C40086A7B0 /* Manager */,
 				FCBD5B7928DA55B50086A7B0 /* Model */,
 				FCAB825328B6A05D00A6D1FA /* AppDelegate.swift */,
 				FCAB825528B6A05D00A6D1FA /* SceneDelegate.swift */,
-				FCAB825728B6A05D00A6D1FA /* ViewController.swift */,
 				FCAB825928B6A05D00A6D1FA /* Main.storyboard */,
 				FCAB825C28B6A05E00A6D1FA /* Assets.xcassets */,
 				FCAB825E28B6A05E00A6D1FA /* LaunchScreen.storyboard */,
 				FCAB826128B6A05E00A6D1FA /* Info.plist */,
-				FCD51D7328B8197900A40618 /* PageSwipeController.swift */,
-				FCD51D7528B821DD00A40618 /* PageCell.swift */,
-				FCA0B7D428BD3803001D37B6 /* GenresViewController.swift */,
-				FCA0B7D628BE5A20001D37B6 /* GenresImagesData.swift */,
-				FCA0B7D828BE5C44001D37B6 /* TabBarViewController.swift */,
-				FCA0B7DA28BE5D5E001D37B6 /* DiscoverViewController.swift */,
-				FCA0B7DC28BE5D93001D37B6 /* ArtistViewController.swift */,
-				FC38A52628C40A97009C4159 /* Label.swift */,
-				FC0101FB28D0C5DB007B76DD /* UIView+Ext.swift */,
-				FC0101FD28D112A2007B76DD /* GenresCell.swift */,
-				FC01020128D11E4D007B76DD /* GenresImage.swift */,
-				FC76C82528D2679F0035F030 /* GenresModel.swift */,
-				FCBD5B7728D9008B0086A7B0 /* NetworkManager.swift */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";
@@ -112,6 +100,8 @@
 		FCBD5B7928DA55B50086A7B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FC38A52628C40A97009C4159 /* Label.swift */,
+				FCBD5B7E28DA57420086A7B0 /* GenresModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -119,6 +109,7 @@
 		FCBD5B7A28DA55C40086A7B0 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				FCBD5B7728D9008B0086A7B0 /* NetworkManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -126,8 +117,41 @@
 		FCBD5B7B28DA55E50086A7B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FCD51D7528B821DD00A40618 /* PageCell.swift */,
+				FC0101FD28D112A2007B76DD /* GenresCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FCBD5B7C28DA569D0086A7B0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FCD51D7328B8197900A40618 /* PageSwipeController.swift */,
+				FCA0B7D828BE5C44001D37B6 /* TabBarViewController.swift */,
+				FCAB825728B6A05D00A6D1FA /* ViewController.swift */,
+				FCA0B7D428BD3803001D37B6 /* GenresViewController.swift */,
+				FCA0B7DA28BE5D5E001D37B6 /* DiscoverViewController.swift */,
+				FCA0B7DC28BE5D93001D37B6 /* ArtistViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FCBD5B7D28DA57250086A7B0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FC0101FB28D0C5DB007B76DD /* UIView+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FCBD5B7E28DA57420086A7B0 /* GenresModel */ = {
+			isa = PBXGroup;
+			children = (
+				FCA0B7D628BE5A20001D37B6 /* GenresImagesData.swift */,
+				FC01020128D11E4D007B76DD /* GenresImage.swift */,
+				FC76C82528D2679F0035F030 /* GenresModel.swift */,
+			);
+			path = GenresModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
