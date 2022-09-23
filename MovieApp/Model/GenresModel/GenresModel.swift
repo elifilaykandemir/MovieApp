@@ -14,4 +14,5 @@ struct GenresModel:Decodable{
 struct GenresData: Decodable {
     var id : Int
     var name : String
+    var image : String?
 }

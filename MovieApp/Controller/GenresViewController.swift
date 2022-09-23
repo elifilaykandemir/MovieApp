@@ -8,7 +8,7 @@
 import UIKit
 
 class GenresViewController:UIViewController {
-
+    
     var tableView = UITableView()
     var genres : [GenresImage] = []
     var genresTitleName = [GenresData]()
@@ -17,24 +17,24 @@ class GenresViewController:UIViewController {
     struct Cells{
         static let genreCell = "GenreCell"
     }
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .search)
         configureTableView()
         genres = fetchData()
- 
+        
         fetch()
         
         
     }
     func fetch(){
-       
-        NetworkManager.fetchGenericData(urlString: "https://api.themoviedb.org/3/genre/movie/list?api_key=dc190303aea87bdf6e4faa3d59de8c59") { (genresdata:GenresModel) in
+        
+        NetworkManager.fetchGenericData(urlString: "\(NetworkManager.site)/3/genre/movie/list?api_key=\(NetworkManager.apiKey)") { (genresdata:GenresModel) in
             self.genresTitleName = genresdata.genres
-            print(self.genresTitleName.count)
-            print(self.genresTitleName[0].name)
+            //self.genresTitleName = genresdata.genres.map{$0.image=Int.random(in: 0...4)}
+            
         }
     }
     
@@ -51,6 +51,8 @@ class GenresViewController:UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+
 }
 
 extension GenresViewController: UITableViewDelegate,UITableViewDataSource{
@@ -60,14 +62,11 @@ extension GenresViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.genreCell) as! GenresCell
-        let genre = genres[indexPath.row]
-        cell.setImage(genres: genre)
-        cell.genresTitleLabel.text = genresTitleName[indexPath.row].name
-        cell.layer.borderColor = UIColor.white.cgColor
-        cell.layer.borderWidth = 2.0
-        cell.layer.masksToBounds = true
+        cell.cellStyle(index:indexPath.row,genresTitleName: genresTitleName,genres: genres)
+
         return cell
     }
+    
     
     
 }

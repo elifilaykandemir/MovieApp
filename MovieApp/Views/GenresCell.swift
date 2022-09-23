@@ -9,14 +9,34 @@ import UIKit
 
 class GenresCell: UITableViewCell {
     
-    var genresImageView = UIImageView()
-    var genresTitleLabel = UILabel()
+    lazy var genresImageView = UIImageView()
+    
+    
+    func cellStyle(index:Int,genresTitleName:[GenresData],genres:[GenresImage]){
+        let genre = genres[index]
+        self.setImage(genres: genre)
+        self.genresTitleLabel.text = genresTitleName[index].name
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 2.0
+        self.layer.masksToBounds = true
+        
+    }
+    
+    lazy var genresTitleLabel : UILabel = {
+        var label = UILabel()
+        label.backgroundColor = UIColor(named: "verylightgray")?.withAlphaComponent(0.5)
+        label.font = UIFont(name: "AppleGothic", size: 22)
+        return label
+    }()
+    
+    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(genresImageView)
         addSubview(genresTitleLabel)
-        configureTitleView()
+
+        //configureTitleView()
         setImageConstraints()
         setLabelConstraints()
 
@@ -32,11 +52,7 @@ class GenresCell: UITableViewCell {
     }
  
     
-    func configureTitleView(){
-        genresTitleLabel.backgroundColor = UIColor(named: "verylightgray")?.withAlphaComponent(0.5)
-        genresTitleLabel.font = UIFont(name: "AppleGothic", size: 22)
-        
-    }
+
     //TODO:Create function for constraint
     func setImageConstraints(){
         genresImageView.translatesAutoresizingMaskIntoConstraints = false
