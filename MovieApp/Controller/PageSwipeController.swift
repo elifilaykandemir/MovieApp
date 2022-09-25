@@ -14,7 +14,6 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
     
     lazy var exploreButton : UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Explore Collection   >", for: .normal)
         button.titleLabel?.textColor = .white
         button.titleLabel?.textAlignment = .center
@@ -30,7 +29,6 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
         pageCont.numberOfPages = 3
         pageCont.currentPageIndicatorTintColor = UIColor(named: "buttonblue")
         pageCont.pageIndicatorTintColor = .white
-        pageCont.translatesAutoresizingMaskIntoConstraints = false
         return pageCont
     }()
 
@@ -72,18 +70,8 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
     func setupconstraint(){
         view.addSubview(exploreButton)
         view.addSubview(pageControl)
-        lazy var constraint = [
-            exploreButton.topAnchor.constraint(equalTo: view.topAnchor , constant: 720 ),
-            exploreButton.bottomAnchor.constraint(equalTo: view.bottomAnchor , constant:-120),
-            exploreButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
-            exploreButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
-            pageControl.topAnchor.constraint(equalTo: view.topAnchor , constant: 763 ),
-            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor , constant:-24),
-            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pageControl.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-       ]
-        
-        NSLayoutConstraint.activate(constraint)
+        exploreButton.addConstraint(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 720, paddingLeft: 50, paddingBottom: 120, paddingRight: 50, width: nil, height: nil,centerX: nil , centerY: nil)
+        pageControl.addConstraint(top:view.topAnchor,left:nil , bottom: view.bottomAnchor, right: nil, paddingTop: 763, paddingLeft: 0, paddingBottom: 24, paddingRight: 0, width: nil, height: nil, centerX:view.centerXAnchor, centerY: view.centerYAnchor)
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

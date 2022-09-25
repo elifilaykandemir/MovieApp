@@ -35,20 +35,9 @@ class PageCell : UICollectionViewCell{
         addSubview(pageTitle)
         addSubview(pageSubtitle)
         
-        let constraint = [
-        backroundImageView.topAnchor.constraint(equalTo: topAnchor , constant: 0),
-        backroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor , constant:0 ),
-        backroundImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
-        backroundImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
-        pageTitle.topAnchor.constraint(equalTo: topAnchor , constant: 350),
-        pageTitle.bottomAnchor.constraint(equalTo:bottomAnchor , constant:-480),
-        pageTitle.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
-        pageTitle.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
-        pageSubtitle.topAnchor.constraint(equalTo: pageTitle.bottomAnchor, constant:4 ),
-        pageSubtitle.bottomAnchor.constraint(equalTo:bottomAnchor , constant:-353),
-        pageSubtitle.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
-        pageSubtitle.rightAnchor.constraint(equalTo: rightAnchor, constant: 0)
-        ]
-        NSLayoutConstraint.activate(constraint)
+        backroundImageView.addConstraint(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: nil, height:nil , centerX: nil, centerY: nil)
+        pageTitle.addConstraint(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 350, paddingLeft: 0, paddingBottom: 480, paddingRight: 0, width: nil, height: nil, centerX: nil, centerY: nil)
+        pageSubtitle.addConstraint(top: pageTitle.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop:4, paddingLeft:0, paddingBottom: 353, paddingRight: 0, width: nil, height: nil, centerX:nil , centerY: nil)
+        
     }
 }

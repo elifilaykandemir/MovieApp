@@ -36,10 +36,8 @@ class GenresCell: UITableViewCell {
         addSubview(genresImageView)
         addSubview(genresTitleLabel)
 
-        //configureTitleView()
-        setImageConstraints()
-        setLabelConstraints()
-
+        setConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -51,22 +49,9 @@ class GenresCell: UITableViewCell {
         
     }
  
-    
+    func setConstraints(){
+        genresImageView.addConstraint(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: nil, height: nil, centerX: nil, centerY: nil)
+        genresTitleLabel.addConstraint(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 125, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: nil, height: nil, centerX: nil, centerY: nil)
 
-    //TODO:Create function for constraint
-    func setImageConstraints(){
-        genresImageView.translatesAutoresizingMaskIntoConstraints = false
-        genresImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        genresImageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        genresImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        genresImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-    }
-    
-    func setLabelConstraints(){
-        genresTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        genresTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        genresTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        genresTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        genresTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 125).isActive = true
     }
 }
