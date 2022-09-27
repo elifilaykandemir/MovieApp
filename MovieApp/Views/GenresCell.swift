@@ -12,10 +12,10 @@ class GenresCell: UITableViewCell {
     lazy var genresImageView = UIImageView()
     
     
-    func cellStyle(index:Int,genresTitleName:[GenresData],genres:[GenresImage]){
+    func cellStyle(index:Int,genresTitleName:[String],genres:[GenresImage]){
         let genre = genres[index]
         self.setImage(genres: genre)
-        self.genresTitleLabel.text = genresTitleName[index].name
+        self.genresTitleLabel.text = genresTitleName[index]
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 2.0
         self.layer.masksToBounds = true

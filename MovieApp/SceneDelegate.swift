@@ -28,37 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window!.makeKeyAndVisible()
         }
     }
-    
-    func createGenresNC() -> UINavigationController{
-        let genresVC = GenresViewController()
-        genresVC.title = "Genres"
-        genresVC.tabBarItem.image = UIImage(named: "genres")
-        genresVC.tabBarItem.tag = 1
-        return UINavigationController(rootViewController: genresVC)
-    }
-    
-    func createDiscoverNC() -> UINavigationController{
-        let discoverVC = DiscoverViewController()
-        discoverVC.title = "Discover"
-        discoverVC.tabBarItem.image = UIImage(named: "discover")
-        discoverVC.tabBarItem.tag = 0
-        return UINavigationController(rootViewController: discoverVC)
-    }
-    
-    func createArtistNC() -> UINavigationController{
-        let artistVC = ArtistViewController()
-        artistVC.title = "Artists"
-        artistVC.tabBarItem.image = UIImage(named: "artists")
-        artistVC.tabBarItem.tag = 2
-        return UINavigationController(rootViewController: artistVC)
-    }
-    
-    func createTabBar()->UITabBarController{
-        let tabBar = UITabBarController()
-        UITabBar.appearance().tintColor = .black
-        tabBar.viewControllers = [createDiscoverNC(),createGenresNC(),createArtistNC()]
-        return tabBar
-    }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
