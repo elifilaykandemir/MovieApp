@@ -10,10 +10,9 @@ import Foundation
 class NetworkManager{
     
     static let apiKey : String = "dc190303aea87bdf6e4faa3d59de8c59"
-    static var site : String = "https://api.themoviedb.org"
+    static var site : String = "https://api.themoviedb.org/3"
     
     static func fetchGenericData<T: Decodable>(urlString:String,completion: @escaping (T)->()){
-        
         
         guard let url = URL(string: urlString) else {return}
         

@@ -16,6 +16,8 @@ class GenresViewController:UIViewController {
     var titleData : [String] = []
     var genrescell = GenresCell()
     
+    
+    
     lazy var searchBar : UISearchBar = {
         var searchbar = UISearchBar()
         searchbar.placeholder = " Search..."
@@ -61,14 +63,16 @@ class GenresViewController:UIViewController {
     
     func fetch(){
         
-        NetworkManager.fetchGenericData(urlString: "\(NetworkManager.site)/3/genre/movie/list?api_key=\(NetworkManager.apiKey)") { (genresdata:GenresModel) in
+        NetworkManager.fetchGenericData(urlString: "\(NetworkManager.site)/genre/movie/list?api_key=\(NetworkManager.apiKey)") { (genresdata:GenresModel) in
             self.genresTitleName = genresdata.genres
             for i in 0 ..< self.genresTitleName.count{
                 self.titleData.append(self.genresTitleName[i].name)
             }
             self.filteredData = self.titleData
             //self.genresTitleName = genresdata.genres.map{$0.image=Int.random(in: 0...4)}
-            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
   
