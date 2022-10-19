@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GenresViewController:UIViewController {
+class GenresViewController:SearchController {
     
     var tableView = UITableView()
     var genres : [GenresImage] = []
@@ -17,33 +17,7 @@ class GenresViewController:UIViewController {
     var genrescell = GenresCell()
     
     
-    
-    lazy var searchBar : UISearchBar = {
-        var searchbar = UISearchBar()
-        searchbar.placeholder = " Search..."
-        searchbar.delegate = self
-        searchbar.sizeToFit()
-        return searchbar
-    }()
-    
-    @objc func handleShowSearchBar(){
-        search(shouldshow: true)
-        searchBar.becomeFirstResponder()
-    }
 
-    func showSearchBarButton(show:Bool){
-        if show {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleShowSearchBar))
-        }else{
-            self.navigationItem.rightBarButtonItem = nil
-        }
-    }
-    
-    func search(shouldshow:Bool){
-        showSearchBarButton(show: !shouldshow)
-        searchBar.showsCancelButton = shouldshow
-        self.navigationItem.titleView = shouldshow ? searchBar : nil
-    }
 
   
     struct Cells{
@@ -53,8 +27,8 @@ class GenresViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-       
-        //self.navigationItem.rightBarButtonItem = searchBarButtonItem
+        searchBar.delegate = self
+        
         showSearchBarButton(show: true)
         configureTableView()
         genres = fetchData()
@@ -69,7 +43,7 @@ class GenresViewController:UIViewController {
                 self.titleData.append(self.genresTitleName[i].name)
             }
             self.filteredData = self.titleData
-            //self.genresTitleName = genresdata.genres.map{$0.image=Int.random(in: 0...4)}
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

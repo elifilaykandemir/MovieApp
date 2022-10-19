@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArtistViewController: UIViewController {
+class ArtistViewController: SearchController {
 
     
 
@@ -15,19 +15,18 @@ class ArtistViewController: UIViewController {
     var artistNames = [String]()
     var artistImages = [String]()
     var filteredData : [String] = []
-    var imagenotFound = "/whNwkEQYWLFJA8ij0WyOOAD5xhQ.jpg" //Fix this
+    var imagenotFound = "/whNwkEQYWLFJA8ij0WyOOAD5xhQ.jpg" 
     let imageUrl = "https://image.tmdb.org/t/p/original"
     let cache = NSCache<NSNumber, UIImage>()
-    let utilityQueue = DispatchQueue.global(qos: .utility)
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .search)
+        searchBar.delegate = self
+        showSearchBarButton(show: true)
         setCollectionView()
-        //setupLayouts()
-        //configureCollectionView()
+        
         fetchPapularArtistsData()
     }
     
@@ -50,13 +49,9 @@ class ArtistViewController: UIViewController {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
-            print(self.filteredData)
-            print(self.artistImages)
             
         }
     }
-  
-    
 
         private lazy var collectionView : UICollectionView = {
             let layout = UICollectionViewFlowLayout()
@@ -85,19 +80,6 @@ class ArtistViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-    func loadImage(artistTitleName:String,artist:String,completion: @escaping (UIImage?) -> ()) {
-            utilityQueue.async {
-                let url = URL(string: "\(self.imageUrl)\(artist)")!
-                print(url)
-                guard let data = try? Data(contentsOf: url) else { return }
-                let image = UIImage(data: data)
-    
-                DispatchQueue.main.async {
-                    completion(image)
-                }
-            }
-        }
-    
     
 }
 
@@ -127,7 +109,8 @@ extension ArtistViewController:UICollectionViewDataSource,UICollectionViewDelega
             print("Using a cached image for item: \(itemNumber)")
             cell.artistsImageView.image = cachedImage
         } else {
-            self.loadImage(artistTitleName: filteredData[indexPath.row], artist: artistImages[indexPath.row]) { [weak self] (image) in
+            NetworkManager.loadImage(artist: artistImages[indexPath.row],defaultImage: self.imageUrl) { [weak self] (image) in
+                
                 guard let self = self, let image = image else { return }
                 
                 cell.artistsImageView.image = image
@@ -139,3 +122,15 @@ extension ArtistViewController:UICollectionViewDataSource,UICollectionViewDelega
     
 }
 
+extension ArtistViewController : UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        search(shouldshow: false)
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredData = searchText.isEmpty ? artistNames : artistNames.filter {(item:String) -> Bool in
+            return item.range(of: searchText , options: .caseInsensitive , range: nil , locale: nil) != nil
+        }
+        collectionView.reloadData()
+    }
+    }
