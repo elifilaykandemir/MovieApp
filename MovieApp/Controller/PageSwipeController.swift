@@ -16,7 +16,6 @@ class PageSwipeController : UICollectionViewController,UICollectionViewDelegateF
         let button = UIButton()
         button.setTitle("Explore Collection   >", for: .normal)
         button.titleLabel?.textColor = .white
-        button.titleLabel?.textAlignment = .center
         button.backgroundColor = UIColor(named: "buttonblue")
         button.titleLabel?.font = UIFont(name: "AppleGothic", size: 22)
         button.titleLabel?.textAlignment = .center

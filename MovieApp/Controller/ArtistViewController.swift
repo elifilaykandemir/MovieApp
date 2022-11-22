@@ -7,14 +7,12 @@
 
 import UIKit
 
-class ArtistViewController: SearchController {
+class ArtistViewController: SearchController<PopularArtistsData> {
 
     
 
-    var artistData = [PopularArtistsData]()
-    var artistNames = [String]()
-    var artistImages = [String]()
-    var filteredData : [String] = []
+
+    static var chosenArtist : Int = 0
     var imagenotFound = "/whNwkEQYWLFJA8ij0WyOOAD5xhQ.jpg" 
     let imageUrl = "https://image.tmdb.org/t/p/original"
     let cache = NSCache<NSNumber, UIImage>()
@@ -36,16 +34,9 @@ class ArtistViewController: SearchController {
     func fetchPapularArtistsData(){
         
         NetworkManager.fetchGenericData(urlString: "\(NetworkManager.site)/person/popular?api_key=\(NetworkManager.apiKey)&language=en-US&page=1&language=en-US&page=1") { (artistdata:PopularArtistsModel) in
-            self.artistData = artistdata.results
-            print("")
-            for i in 0 ..< self.artistData.count{
-                self.artistNames.append(self.artistData[i].name!)
-                if let imagedata = self.artistData[i].profile_path {
-                    self.artistImages.append(imagedata)
-                } else {self.artistImages.append(self.imagenotFound)}
-                
-            }
-            self.filteredData = self.artistNames
+            self.rawData = artistdata.results
+            self.filteredData = self.rawData
+            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -65,6 +56,7 @@ class ArtistViewController: SearchController {
             return collectView
         }()
 
+    
     func setCollectionView(){
         setdelegate()
         collectionView.register(ArtistsCell.self, forCellWithReuseIdentifier:artistsCell)
@@ -81,6 +73,10 @@ class ArtistViewController: SearchController {
         collectionView.delegate = self
     }
     
+    override func reloadViewData() {
+        collectionView.reloadData()
+    }
+    
 }
 
 extension ArtistViewController:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate {
@@ -91,13 +87,23 @@ extension ArtistViewController:UICollectionViewDataSource,UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: artistsCell, for: indexPath) as! ArtistsCell
-        cell.collectionCellStyle(artistTitleName: filteredData[indexPath.row])
+        cell.collectionCellStyle(artistTitleName: filteredData[indexPath.row].name)
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout CollectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        return CGSize(width: 111, height:160)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        ArtistViewController.chosenArtist = filteredData[indexPath.row].id!
+        let vc = ArtistDetailsViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
@@ -109,7 +115,7 @@ extension ArtistViewController:UICollectionViewDataSource,UICollectionViewDelega
             print("Using a cached image for item: \(itemNumber)")
             cell.artistsImageView.image = cachedImage
         } else {
-            NetworkManager.loadImage(artist: artistImages[indexPath.row],defaultImage: self.imageUrl) { [weak self] (image) in
+            NetworkManager.loadImage(artist: filteredData[indexPath.row].profile_path ?? self.imagenotFound,defaultImage: self.imageUrl) { [weak self] (image) in
                 
                 guard let self = self, let image = image else { return }
                 
@@ -122,15 +128,4 @@ extension ArtistViewController:UICollectionViewDataSource,UICollectionViewDelega
     
 }
 
-extension ArtistViewController : UISearchBarDelegate {
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        search(shouldshow: false)
-    }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        filteredData = searchText.isEmpty ? artistNames : artistNames.filter {(item:String) -> Bool in
-            return item.range(of: searchText , options: .caseInsensitive , range: nil , locale: nil) != nil
-        }
-        collectionView.reloadData()
-    }
-    }
+

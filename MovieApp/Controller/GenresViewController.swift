@@ -7,17 +7,14 @@
 
 import UIKit
 
-class GenresViewController:SearchController {
+class GenresViewController:SearchController<GenresData> {
     
     var tableView = UITableView()
-    var genres : [GenresImage] = []
-    var genresTitleName = [GenresData]()
-    var filteredData : [String] = []
-    var titleData : [String] = []
-    var genrescell = GenresCell()
     
     
-
+    override func reloadViewData() {
+        tableView.reloadData()
+    }
 
   
     struct Cells{
@@ -31,18 +28,16 @@ class GenresViewController:SearchController {
         
         showSearchBarButton(show: true)
         configureTableView()
-        genres = fetchData()
+    
         fetch()
     }
     
     func fetch(){
         
         NetworkManager.fetchGenericData(urlString: "\(NetworkManager.site)/genre/movie/list?api_key=\(NetworkManager.apiKey)") { (genresdata:GenresModel) in
-            self.genresTitleName = genresdata.genres
-            for i in 0 ..< self.genresTitleName.count{
-                self.titleData.append(self.genresTitleName[i].name)
-            }
-            self.filteredData = self.titleData
+            self.rawData = genresdata.genres
+            self.filteredData = self.rawData
+            
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -73,7 +68,8 @@ extension GenresViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.genreCell) as! GenresCell
-        cell.cellStyle(index:indexPath.row,genresTitleName: filteredData,genres: genres)
+        
+        cell.cellStyle(genresTitleName: filteredData[indexPath.row].name,image:fetchData(index: indexPath.row) )
         return cell
     }
     
@@ -81,28 +77,24 @@ extension GenresViewController: UITableViewDelegate,UITableViewDataSource{
 
 extension GenresViewController{
     
-    func fetchData() -> [GenresImage]{
+    func fetchData(index:Int) -> GenresImage{
         
-        let genres1 = GenresImage(image: GenresImagesData.drama)
-        let genres2 = GenresImage(image: GenresImagesData.adventure)
-        let genres3 = GenresImage(image: GenresImagesData.animation)
-        let genres4 = GenresImage(image: GenresImagesData.fantastic)
-        
-        
-        return [genres1,genres2,genres3,genres4,genres1,genres2,genres3,genres4,genres1,genres2,genres3,genres4,genres1,genres2,genres3,genres4,genres1,genres2,genres3,genres4]
-    }
-    
-}
-
-extension GenresViewController : UISearchBarDelegate {
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        search(shouldshow: false)
-    }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        filteredData = searchText.isEmpty ? titleData : titleData.filter {(item:String) -> Bool in
-            return item.range(of: searchText , options: .caseInsensitive , range: nil , locale: nil) != nil
+        if index % 4 == 0{
+            return GenresImage(image: GenresImagesData.drama)
         }
-        tableView.reloadData()
+        else if index % 4 == 1{
+            return GenresImage(image: GenresImagesData.adventure)
+        }
+        else if index % 4 == 2{
+            return GenresImage(image: GenresImagesData.animation)
+        }
+        else if index % 4 == 3{
+            return GenresImage(image: GenresImagesData.fantastic)
+        }
+        else {
+            return GenresImage(image: GenresImagesData.fantastic)
+            
+        }
+           
     }
-    }
+}

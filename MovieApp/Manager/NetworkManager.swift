@@ -16,17 +16,16 @@ class NetworkManager{
     
     static func fetchGenericData<T: Decodable>(urlString:String,completion: @escaping (T)->()){
         
+        
         guard let url = URL(string: urlString) else {return}
-        
+      
         let session = URLSession(configuration: .default)
-        
+       
         let task = session.dataTask(with: url){(data,response,error) in
-            
-            
+
             guard let safeData = data else { return }
- 
+          
             do{
-                
                 let decodedData = try JSONDecoder().decode(T.self, from: safeData)
                 completion(decodedData)
                 
@@ -35,12 +34,15 @@ class NetworkManager{
             }
         }
         task.resume()
+        sleep(1)
+        
     }
     
     static func loadImage(artist:String?,defaultImage:String,completion: @escaping (UIImage?) -> ()) {
+      
         utilityQueue.async {
                 let url = URL(string: "\(defaultImage)\(artist!)")!
-                print(url)
+               
                 guard let data = try? Data(contentsOf: url) else { return }
                 let image = UIImage(data: data)
     

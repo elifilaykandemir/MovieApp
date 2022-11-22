@@ -7,10 +7,11 @@
 
 import UIKit
 
-class SearchController :UIViewController{
+class SearchController<T:Decodable & Searchable>:UIViewController,UISearchBarDelegate{
     
+    var rawData = [T]()
+    var filteredData : [T] = []
     
-
     lazy var searchBar : UISearchBar = {
         var searchbar = UISearchBar()
         searchbar.placeholder = " Search..."
@@ -37,6 +38,15 @@ class SearchController :UIViewController{
         self.navigationItem.titleView = shouldshow ? searchBar : nil
     }
 
-
-
-}
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        search(shouldshow: false)
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredData = searchText.isEmpty ? rawData : rawData.filter{$0.controlledSearhableText(text: searchText)}
+        reloadViewData()
+    }
+    public func reloadViewData(){
+        
+    }
+    }
