@@ -9,7 +9,7 @@ import UIKit
 
 class CacheManager {
     
-    let cache = NSCache<NSNumber, UIImage>()
+    let cache = NSCache<NSString, UIImage>()
     static let sharedInstance = CacheManager()
     
 }

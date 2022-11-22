@@ -139,6 +139,9 @@ class ArtistDetailsViewController: UIViewController,UICollectionViewDataSource,U
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArtistDetailsCell.identifier, for: indexPath) as! ArtistDetailsCell
+        
+        cell.imageLoader(rawData[indexPath.row].file_path ?? self.imagenotFound, cell.artistsDetailImageView, self.imageUrl)
+        
         segmentedController.frame = CGRect(x: 0, y:(contentBigHeight+contentSmallHeight), width: view.frame.width, height: 50)
         
         if indexPath.item == 0{
@@ -157,27 +160,6 @@ class ArtistDetailsViewController: UIViewController,UICollectionViewDataSource,U
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        guard let cell = cell as? ArtistDetailsCell else { return }
-        
-        let itemNumber = NSNumber(value: indexPath.item)
-        
-        if let cachedImage = self.cache.object(forKey: itemNumber) {
-            
-            print("Using a cached image for item: \(itemNumber)")
-            cell.artistsDetailImageView.image = cachedImage
-            
-        } else {
-            NetworkManager.loadImage(artist: rawData[indexPath.row].file_path ?? self.imagenotFound,defaultImage: self.imageUrl) { [weak self] (image) in
-                
-                guard let self = self, let image = image else { return }
-                
-                cell.artistsDetailImageView.image = image
-                
-                self.cache.setObject(image, forKey: itemNumber)
-            }
-        }
-    }
+    
 }
 
