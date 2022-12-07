@@ -88,7 +88,7 @@ extension ArtistViewController:UICollectionViewDataSource,UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: artistsCell, for: indexPath) as! ArtistsCell
         cell.collectionCellStyle(artistTitleName: filteredData[indexPath.row].name)
-        
+        cell.setImage(with:filteredData[indexPath.row].profile_path)
         return cell
     }
     
@@ -103,28 +103,7 @@ extension ArtistViewController:UICollectionViewDataSource,UICollectionViewDelega
         present(vc, animated: true)
     }
     
-    
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        guard let cell = cell as? ArtistsCell else { return }
-        
-        let itemNumber = NSNumber(value: indexPath.item)
-        
-        if let cachedImage = self.cache.object(forKey: itemNumber) {
-            print("Using a cached image for item: \(itemNumber)")
-            cell.artistsImageView.image = cachedImage
-        } else {
-            NetworkManager.loadImage(artist: filteredData[indexPath.row].profile_path ?? self.imagenotFound,defaultImage: self.imageUrl) { [weak self] (image) in
-                
-                guard let self = self, let image = image else { return }
-                
-                cell.artistsImageView.image = image
-                
-                self.cache.setObject(image, forKey: itemNumber)
-            }
-        }
-    }
+ 
     
 }
 

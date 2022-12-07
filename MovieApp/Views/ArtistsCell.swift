@@ -44,8 +44,10 @@ class ArtistsCell: UICollectionViewCell {
             self.artistsImageView.image = nil
         }
     
-    func setImage(with artist:String){
-        artistsImageView.image = UIImage(named: artist)
+    func setImage(with artist:String?){
+        CacheManager.sharedInstance.getImage(imageAdress:artist , completion:{[weak self] image in
+            self?.artistsImageView.image = image
+        } )
         
     }
     

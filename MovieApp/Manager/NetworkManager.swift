@@ -34,7 +34,7 @@ class NetworkManager{
             }
         }
         task.resume()
-        sleep(1)
+        //sleep(1)
         
     }
     

@@ -58,23 +58,12 @@ class ArtistDetailsCell: UICollectionViewCell{
         artistsDetailImageView.addConstraint(top:contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: nil, height: nil, centerX: nil, centerY: nil)
     }
     
-    func imageLoader(_ imagePath:String,_ cachedImageData:UIImageView,_ defaultImage:String){
-        let itemImage = NSString(string:imagePath)
+    
+    func setImage(with artist:String?){
+        CacheManager.sharedInstance.getImage(imageAdress:artist , completion:{[weak self] image in
+            self?.artistsDetailImageView.image = image
+        } )
         
-        if let cachedImage = CacheManager.sharedInstance.cache.object(forKey: itemImage) {
-            print("Using a cached image for item: \(itemImage)")
-            
-            cachedImageData.image = cachedImage
-        } else {
-            NetworkManager.loadImage(artist: imagePath,defaultImage: defaultImage) { [weak self] (image) in
-                
-                guard let image = image else { return }
-                
-                cachedImageData.image = image
-                
-                CacheManager.sharedInstance.cache.setObject(image, forKey: itemImage)
-            }
-        }
     }
     
     func setupLayoutContent(){

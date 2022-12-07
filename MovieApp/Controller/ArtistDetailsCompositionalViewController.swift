@@ -140,7 +140,8 @@ class ArtistDetailsViewController: UIViewController,UICollectionViewDataSource,U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArtistDetailsCell.identifier, for: indexPath) as! ArtistDetailsCell
         
-        cell.imageLoader(rawData[indexPath.row].file_path ?? self.imagenotFound, cell.artistsDetailImageView, self.imageUrl)
+  
+        cell.setImage(with:rawData[indexPath.row].file_path )
         
         segmentedController.frame = CGRect(x: 0, y:(contentBigHeight+contentSmallHeight), width: view.frame.width, height: 50)
         
