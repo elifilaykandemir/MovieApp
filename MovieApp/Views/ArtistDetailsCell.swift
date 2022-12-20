@@ -65,6 +65,9 @@ class ArtistDetailsCell: UICollectionViewCell{
         } )
         
     }
+    func setImageNotFound(with artist:String){
+        self.artistsDetailImageView.image = UIImage(named: artist)
+    }
     
     func setupLayoutContent(){
     

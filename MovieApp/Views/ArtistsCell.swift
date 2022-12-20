@@ -51,6 +51,10 @@ class ArtistsCell: UICollectionViewCell {
         
     }
     
+    func setImageNotFound(with artist:String){
+        self.artistsImageView.image = UIImage(named: artist)
+    }
+    
     func setConstraints(){
         artistsImageView.addConstraint(top:contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: nil, height: nil, centerX: nil, centerY: nil)
         artistTitleLabel.addConstraint(top: artistsImageView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: rightAnchor, paddingTop: 115, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: nil, height: nil, centerX: nil, centerY: nil)

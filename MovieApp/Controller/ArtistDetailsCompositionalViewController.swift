@@ -140,12 +140,9 @@ class ArtistDetailsViewController: UIViewController,UICollectionViewDataSource,U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArtistDetailsCell.identifier, for: indexPath) as! ArtistDetailsCell
         
-  
-        cell.setImage(with:rawData[indexPath.row].file_path )
+        cell.setImage(with:rawData[safe:indexPath.row]?.file_path)
         
-        segmentedController.frame = CGRect(x: 0, y:(contentBigHeight+contentSmallHeight), width: view.frame.width, height: 50)
-        
-        if indexPath.item == 0{
+        if indexPath.item == 0 {
             cell.collectionCellStyle(artistName: artistName, artistBirthday: birthday, knownas: knownforDepartman)
             cell.setupLayoutContent()
             contentBigHeight = cell.contentView.bounds.height
@@ -164,3 +161,12 @@ class ArtistDetailsViewController: UIViewController,UICollectionViewDataSource,U
     
 }
 
+extension Collection {
+
+    public subscript(safe index: Index) -> Iterator.Element? {
+
+        return index >= startIndex && index < endIndex ? self[index] : nil
+
+    }
+
+}
