@@ -98,7 +98,7 @@ extension ArtistViewController:UICollectionViewDataSource,UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         ArtistViewController.chosenArtist = filteredData[indexPath.row].id!
-        let vc = ArtistDetailsViewController()
+        let vc = ArtistDetailViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
